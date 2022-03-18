@@ -1,5 +1,5 @@
-const SET_USER = "Set User";
-const CLEAR_USER = "Set User";
+export const SET_USER = "Set User";
+export const CLEAR_USER = "Set User";
 
 export const setUser = (username) => {
     return { type: SET_USER, username };
