@@ -1,1 +1,39 @@
-
+.centerAlign {
+    align-items: center;
+}
+.displayFlex {
+    display: flex;
+}
+.justifyCenter {
+    justify-content: center;
+}
+.borderRadius {
+    border-radius: 8px;
+}
+.loginPage {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-width: 100%;
+    background-color: #101011;
+}
+.loginContainer {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.loginFunctionality {
+    position: relative;
+    width: 35%;
+    min-height: 300px;
+    background-color: #1d1c1f;
+    padding: 30px;
+    color: white;
+    margin-right: -200px;
+}
+.loginImg {
+    width: 65%;
+    height: 700px;
+    object-fit: cover;
+}
