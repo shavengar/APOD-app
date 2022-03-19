@@ -12,8 +12,17 @@ const LoginPage = ({ setUser }) => {
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
     const [error, setError] = useState(false);
+    /**
+     * @todo change local isUser state to an actual check in the database for user information
+     */
     const [isUser, setIsUser] = useState(false);
     const navigate = useNavigate();
+
+    /**
+     * checks length of username and password lengths
+     * @throws error in state, triggering an error message in the jsx
+     * @returns local state back to default, sets user in global state(redux), navigates user to home page
+     */
 
     const handleLogin = useCallback(() => {
         const usernameInput = usernameRef.current.value;
@@ -26,9 +35,9 @@ const LoginPage = ({ setUser }) => {
         ) {
             return setError(true);
         }
-        setUser(usernameRef);
         setError(false);
         setIsUser(true);
+        setUser(usernameRef);
         navigate("/home");
     }, []);
     return (
@@ -64,6 +73,7 @@ const LoginPage = ({ setUser }) => {
                         >
                             Login
                         </Button>
+
                         {error && (
                             <Alert severity="error">
                                 <Typography
