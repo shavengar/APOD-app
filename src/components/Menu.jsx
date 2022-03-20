@@ -5,18 +5,49 @@ import { clearUser } from "../redux/actions";
 
 const Menu = ({ user, clearUser }) => {
     return (
-        <div>
+        <div className="bgColor">
             {!user && (
-                <>
-                    <NavLink to="login">Login</NavLink>
-                    <NavLink to="signup">Sign Up</NavLink>
-                </>
+                <div className="displayFlex justifyCenter">
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? "active" : "nav"
+                        }
+                        to="login"
+                    >
+                        Login
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? "active" : "nav"
+                        }
+                        to="signup"
+                    >
+                        Sign Up
+                    </NavLink>
+                </div>
             )}
             {user && (
-                <>
-                    <NavLink to="home">Home</NavLink>
-                    <NavLink to="saved">Saved</NavLink>
+                <div className="displayFlex justifyEven">
                     <NavLink
+                        className={({ isActive }) =>
+                            isActive ? "active" : "nav"
+                        }
+                        to="home"
+                    >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? "active" : "nav"
+                        }
+                        to="saved"
+                    >
+                        Saved
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? "active" : "nav"
+                        }
                         to="login"
                         onClick={() => {
                             clearUser();
@@ -24,7 +55,7 @@ const Menu = ({ user, clearUser }) => {
                     >
                         Logout
                     </NavLink>
-                </>
+                </div>
             )}
         </div>
     );

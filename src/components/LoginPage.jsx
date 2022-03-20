@@ -41,7 +41,7 @@ const LoginPage = ({ setUser }) => {
         navigate("/home");
     }, []);
     return (
-        <section className="loginPage displayFlex justifyCenter">
+        <section className="loginPage bgColor displayFlex justifyCenter">
             <div className="loginContainer displayFlex justifyCenter centerAlign">
                 <div className="loginFunctionality borderRadius displayFlex justifyCenter centerAlign">
                     <div>
