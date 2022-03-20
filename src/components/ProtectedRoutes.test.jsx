@@ -3,11 +3,11 @@ import { render, screen } from "@testing-library/react";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { MemoryRouter } from "react-router-dom";
 
-describe("redirecting with authorizaiton", () => {
+describe("redirecting with authorization", () => {
     const ExampleComponent = () => {
         return <div data-testid="testComponent">Example</div>;
     };
-    const currentUser = { id: 1 };
+    const currentUser = "user";
     it("should render private component", () => {
         render(
             <MemoryRouter initialEntries={["/"]}>
@@ -16,6 +16,8 @@ describe("redirecting with authorizaiton", () => {
                 </ProtectedRoutes>
             </MemoryRouter>
         );
+
+        expect(screen.queryByTestId("testComponent")).toBeDefined();
     });
     it("should not render private component", () => {
         render(
@@ -25,6 +27,7 @@ describe("redirecting with authorizaiton", () => {
                 </ProtectedRoutes>
             </MemoryRouter>
         );
+
+        expect(screen.queryByTestId("testComponent")).toBeNull();
     });
-    expect(screen.queryByTestId("testComponent")).toBeDefined();
 });

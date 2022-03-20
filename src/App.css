@@ -1,1 +1,69 @@
-
+.centerAlign {
+    align-items: center;
+}
+.displayFlex {
+    display: flex;
+}
+.justifyCenter {
+    justify-content: center;
+}
+.justifyEven {
+    justify-content: space-evenly;
+}
+.bgColor {
+    background-color: #101011;
+}
+.publicNav {
+    background-color: #1d1c1f;
+    box-shadow: 3px 3px #333136;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    min-height: 30px;
+    width: 25%;
+}
+.nav {
+    background-color: #1d1c1f;
+    box-shadow: 3px 3px #333136;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 25%;
+    min-height: 30px;
+}
+.active:not(.nav) {
+    display: none;
+}
+.borderRadius {
+    border-radius: 8px;
+}
+.entryPage {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 94vh;
+    min-width: 100%;
+}
+.entryContainer {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.entryFunctionality {
+    position: relative;
+    width: 35%;
+    min-height: 300px;
+    background-color: #1d1c1f;
+    padding: 30px;
+    color: white;
+    margin-right: -200px;
+}
+.entryImg {
+    width: 65%;
+    height: 700px;
+    object-fit: cover;
+}
