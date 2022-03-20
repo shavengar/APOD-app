@@ -41,19 +41,19 @@
 .borderRadius {
     border-radius: 8px;
 }
-.loginPage {
+.entryPage {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     min-height: 94vh;
     min-width: 100%;
 }
-.loginContainer {
+.entryContainer {
     width: 90%;
     max-width: 1000px;
     margin: 0 auto;
 }
-.loginFunctionality {
+.entryFunctionality {
     position: relative;
     width: 35%;
     min-height: 300px;
@@ -62,7 +62,7 @@
     color: white;
     margin-right: -200px;
 }
-.loginImg {
+.entryImg {
     width: 65%;
     height: 700px;
     object-fit: cover;

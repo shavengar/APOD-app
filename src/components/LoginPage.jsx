@@ -41,9 +41,9 @@ const LoginPage = ({ setUser }) => {
         navigate("/home");
     }, []);
     return (
-        <section className="loginPage bgColor displayFlex justifyCenter">
-            <div className="loginContainer displayFlex justifyCenter centerAlign">
-                <div className="loginFunctionality borderRadius displayFlex justifyCenter centerAlign">
+        <section className="entryPage bgColor displayFlex justifyCenter">
+            <div className="entryContainer displayFlex justifyCenter centerAlign">
+                <div className="entryFunctionality borderRadius displayFlex justifyCenter centerAlign">
                     <div>
                         <h2>Login:</h2>
                         <TextField
@@ -107,7 +107,7 @@ const LoginPage = ({ setUser }) => {
                         )} */}
                     </div>
                 </div>
-                <img className="loginImg borderRadius" src={background} />
+                <img className="entryImg borderRadius" src={background} />
             </div>
         </section>
     );
