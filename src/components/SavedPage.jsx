@@ -1,7 +1,40 @@
 import React from "react";
+import { connect } from "react-redux";
+import APODDisplay from "./APODDisplay";
+import { removeFavorite } from "../redux/actions";
+import { Box, ImageList } from "@mui/material";
 
-const SavedPage = () => {
-    return <div>Saved Page</div>;
+const SavedPage = ({ removeFavorite, favorites, user }) => {
+    return (
+        <section>
+            <div className="displayFlex justifyCenter">
+                <h1>Saved:</h1>
+            </div>
+            <div className="displayFlex justifyCenter">
+                <Box sx={{ width: 1000, height: 700, overflowY: "scroll" }}>
+                    <ImageList variant="masonry" cols={3} gap={8}>
+                        {favorites.map((apod) => (
+                            <APODDisplay
+                                key={apod.apod_id}
+                                apod={apod}
+                                removeFavorite={removeFavorite}
+                                isFavorite={true}
+                            />
+                        ))}
+                    </ImageList>
+                </Box>
+            </div>
+        </section>
+    );
 };
 
-export default SavedPage;
+const mapStateToProps = (state) => {
+    return {
+        favorites: state.favorites,
+        user: state.user,
+    };
+};
+
+const mapDispatchToProps = { removeFavorite };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SavedPage);
