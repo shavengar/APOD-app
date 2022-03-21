@@ -11,10 +11,12 @@ const APODPage = ({ addFavorite, removeFavorite, favorites }) => {
         () => favorites.map((fav) => fav.apod_id),
         [favorites]
     );
+
     return (
         <section>
-            <h1>NASA's Astronomy Photos of the Day:</h1>
-            <h4>Below are the photos since the start of 2022.</h4>
+            <div className="displayFlex justifyCenter">
+                <h1>2022 NASA Astronomy Photos of the Day:</h1>
+            </div>
             {loading && (
                 <div className="displayFlex justifyCenter loading">
                     <CircularProgress />
@@ -29,12 +31,6 @@ const APODPage = ({ addFavorite, removeFavorite, favorites }) => {
                                 <APODDisplay
                                     key={apod.apod_id}
                                     apod={apod}
-                                    media={apod.apod_url}
-                                    mediaType={apod.media_type}
-                                    copyright={apod.apod_copyright}
-                                    title={apod.apod_title}
-                                    date={apod.apod_date}
-                                    info={apod.apod_info}
                                     isFavorite={favIds.includes(apod.apod_id)}
                                     addFavorite={addFavorite}
                                     removeFavorite={removeFavorite}
