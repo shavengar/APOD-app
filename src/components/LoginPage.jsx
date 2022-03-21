@@ -41,11 +41,11 @@ const LoginPage = ({ setUser }) => {
         navigate("/home");
     }, []);
     return (
-        <section className="entryPage bgColor displayFlex justifyCenter">
+        <section className="entryPage displayFlex justifyCenter">
             <div className="entryContainer displayFlex justifyCenter centerAlign">
-                <div className="entryFunctionality borderRadius displayFlex justifyCenter centerAlign">
-                    <div>
-                        <h2>Login:</h2>
+                <div className="entryFunctionality accentColor borderRadius displayFlex justifyCenter centerAlign">
+                    <div className="accentColor">
+                        <h2 className="accentColor">Login:</h2>
                         <TextField
                             id="username"
                             label="Username"

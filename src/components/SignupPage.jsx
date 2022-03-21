@@ -39,9 +39,9 @@ const SignupPage = () => {
     return (
         <section className="entryPage bgColor displayFlex justifyCenter">
             <div className="entryContainer displayFlex justifyCenter centerAlign">
-                <div className="entryFunctionality borderRadius displayFlex justifyCenter centerAlign">
-                    <div>
-                        <h2>Sign Up:</h2>
+                <div className="entryFunctionality accentColor borderRadius displayFlex justifyCenter centerAlign">
+                    <div className="accentColor">
+                        <h2 className="accentColor">Sign Up:</h2>
                         <TextField
                             id="createUsername"
                             label="Set Username"
