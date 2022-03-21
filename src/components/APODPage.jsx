@@ -15,7 +15,11 @@ const APODPage = ({ addFavorite, removeFavorite, favorites }) => {
         <section>
             <h1>NASA's Astronomy Photos of the Day:</h1>
             <h4>Below are the photos since the start of 2022.</h4>
-            {loading && <div>Loading</div>}
+            {loading && (
+                <div className="displayFlex justifyCenter loading">
+                    <CircularProgress />
+                </div>
+            )}
             {error && <div>Something went wrong.</div>}
             {!error && !loading && (
                 <div className="displayFlex justifyCenter">
