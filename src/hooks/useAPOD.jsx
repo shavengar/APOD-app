@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 const baseURL =
-    "https://api.nasa.gov/planetary/apod?api_key=RROYlTO9r3RaaFal3W7ZidAlk20Z8LaBiHaRDOs7&start_date=2021-09-19";
+    "https://api.nasa.gov/planetary/apod?api_key=RROYlTO9r3RaaFal3W7ZidAlk20Z8LaBiHaRDOs7&start_date=2022-01-01";
 
 /**
  * asynchronously calls APOD api using axios
@@ -23,9 +23,10 @@ const useAPOD = () => {
             setError(null);
             try {
                 const res = await axios.get(baseURL);
-                const apods = res.map((apod) => ({
+                const apods = res.data.map((apod) => ({
                     apod_copyright: apod.copyright,
                     apod_id: apod.date,
+                    apod_date: apod.date,
                     apod_info: apod.explanation,
                     media_type: apod.media_type,
                     apod_title: apod.title,
