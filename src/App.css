@@ -10,18 +10,18 @@
 .justifyEven {
     justify-content: space-evenly;
 }
-.primaryColors {
+.column {
+    flex-direction: column;
+}
+body {
     background-color: #101011;
     color: white;
 }
 .accentColor {
     background-color: #1d1c1f;
 }
-
 .publicNav {
-    background-color: #1d1c1f;
     box-shadow: 3px 3px #333136;
-    color: white;
     border-radius: 8px;
     text-decoration: none;
     text-align: center;
@@ -69,4 +69,7 @@
     width: 65%;
     height: 700px;
     object-fit: cover;
+}
+.loading {
+    margin-top: 300px;
 }
