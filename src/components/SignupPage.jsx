@@ -1,10 +1,8 @@
 import React, { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import rocket from "../images/rocket.jpg";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-import { Typography } from "@mui/material";
+import { Typography, Alert, Button, TextField } from "@mui/material";
+import RocketLaunchSharpIcon from "@mui/icons-material/RocketLaunchSharp";
 
 const SignupPage = () => {
     const usernameRef = useRef(null);
@@ -37,10 +35,10 @@ const SignupPage = () => {
     }, []);
 
     return (
-        <section className="primaryColors entryPage bgColor displayFlex justifyCenter">
+        <section className="entryPage displayFlex justifyCenter">
             <div className="entryContainer displayFlex justifyCenter centerAlign">
                 <div className="entryFunctionality accentColor borderRadius displayFlex justifyCenter centerAlign">
-                    <div className="accentColor">
+                    <div className="accentColor displayFlex justifyCenter column">
                         <h2 className="accentColor">Sign Up:</h2>
                         <TextField
                             id="createUsername"
@@ -62,10 +60,8 @@ const SignupPage = () => {
                             onClick={() => {
                                 handleSignup();
                             }}
-                            sx={{
-                                color: "white",
-                                borderColor: "white",
-                            }}
+                            endIcon={<RocketLaunchSharpIcon />}
+                            sx={{ mb: 2, display: "flex", size: "large" }}
                         >
                             Sign Up
                         </Button>

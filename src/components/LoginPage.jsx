@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import { setUser } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 import background from "../images/background.jpg";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-import { Typography } from "@mui/material";
+import { Typography, Alert, Button, TextField } from "@mui/material";
+import RocketLaunchSharpIcon from "@mui/icons-material/RocketLaunchSharp";
 
 const LoginPage = ({ setUser }) => {
     const usernameRef = useRef(null);
@@ -41,10 +39,10 @@ const LoginPage = ({ setUser }) => {
         navigate("/home");
     }, []);
     return (
-        <section className="primaryColors entryPage displayFlex justifyCenter">
+        <section className="entryPage displayFlex justifyCenter">
             <div className="entryContainer displayFlex justifyCenter centerAlign">
                 <div className="entryFunctionality accentColor borderRadius displayFlex justifyCenter centerAlign">
-                    <div className="accentColor">
+                    <div className="accentColor displayFlex justifyCenter column">
                         <h2 className="accentColor">Login:</h2>
                         <TextField
                             id="username"
@@ -66,10 +64,8 @@ const LoginPage = ({ setUser }) => {
                             onClick={() => {
                                 handleLogin();
                             }}
-                            sx={{
-                                color: "white",
-                                borderColor: "white",
-                            }}
+                            endIcon={<RocketLaunchSharpIcon />}
+                            sx={{ mb: 2, display: "flex", size: "large" }}
                         >
                             Login
                         </Button>
