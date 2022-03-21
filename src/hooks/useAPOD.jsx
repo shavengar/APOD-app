@@ -24,6 +24,7 @@ const useAPOD = () => {
             try {
                 const res = await axios.get(baseURL);
                 const apods = res.data.map((apod) => ({
+                    apod: apod,
                     apod_copyright: apod.copyright,
                     apod_id: apod.date,
                     apod_date: apod.date,

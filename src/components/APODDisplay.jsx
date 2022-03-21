@@ -27,7 +27,7 @@ const APODDisplay = ({
                     variant="contained"
                     onClick={() => removeFavorite(apod_id)}
                 >
-                    Remove Saved
+                    Unsave
                 </Button>
             )}
         </ImageListItem>
