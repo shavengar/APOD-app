@@ -15,7 +15,7 @@ import SavedPage from "./components/SavedPage";
 
 function App() {
     return (
-        <Router className="App">
+        <Router>
             <Menu />
             <Routes>
                 <Route
