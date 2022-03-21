@@ -37,7 +37,7 @@ const SignupPage = () => {
     }, []);
 
     return (
-        <section className="entryPage bgColor displayFlex justifyCenter">
+        <section className="primaryColors entryPage bgColor displayFlex justifyCenter">
             <div className="entryContainer displayFlex justifyCenter centerAlign">
                 <div className="entryFunctionality accentColor borderRadius displayFlex justifyCenter centerAlign">
                     <div className="accentColor">

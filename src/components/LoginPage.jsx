@@ -41,7 +41,7 @@ const LoginPage = ({ setUser }) => {
         navigate("/home");
     }, []);
     return (
-        <section className="entryPage displayFlex justifyCenter">
+        <section className="primaryColors entryPage displayFlex justifyCenter">
             <div className="entryContainer displayFlex justifyCenter centerAlign">
                 <div className="entryFunctionality accentColor borderRadius displayFlex justifyCenter centerAlign">
                     <div className="accentColor">

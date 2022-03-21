@@ -10,7 +10,7 @@
 .justifyEven {
     justify-content: space-evenly;
 }
-* {
+.primaryColors {
     background-color: #101011;
     color: white;
 }
@@ -21,6 +21,7 @@
 .publicNav {
     background-color: #1d1c1f;
     box-shadow: 3px 3px #333136;
+    color: white;
     border-radius: 8px;
     text-decoration: none;
     text-align: center;
@@ -30,6 +31,7 @@
 }
 .nav {
     background-color: #1d1c1f;
+    color: white;
     box-shadow: 3px 3px #333136;
     border-radius: 8px;
     text-decoration: none;

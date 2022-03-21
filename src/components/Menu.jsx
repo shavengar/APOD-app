@@ -5,9 +5,9 @@ import { clearUser } from "../redux/actions";
 
 const Menu = ({ user, clearUser }) => {
     return (
-        <div className="bgColor">
+        <div className="primaryColors">
             {!user && (
-                <div className="displayFlex justifyCenter">
+                <div className="primaryColors displayFlex justifyCenter">
                     <NavLink
                         className={({ isActive }) =>
                             isActive ? "active" : "nav"
@@ -27,7 +27,7 @@ const Menu = ({ user, clearUser }) => {
                 </div>
             )}
             {user && (
-                <div className="displayFlex justifyEven">
+                <div className="displayFlex justifyEven primaryColors">
                     <NavLink
                         className={({ isActive }) =>
                             isActive ? "active" : "nav"
