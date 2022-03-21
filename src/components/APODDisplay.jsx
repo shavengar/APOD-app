@@ -3,22 +3,18 @@ import React from "react";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 
-const APODDisplay = ({
-    apod,
-    media,
-    mediaType,
-    copyright,
-    title,
-    date,
-    info,
-    isFavorite,
-    addFavorite,
-    removeFavorite,
-    apod_id,
-}) => {
+const APODDisplay = ({ apod, isFavorite, addFavorite, removeFavorite }) => {
     return (
         <ImageListItem>
-            <img src={`${media}?w=248&fit=crop&auto=format`} alt={title} />
+            {apod.media_type === "image" && (
+                <img
+                    src={`${apod.apod_url}?w=248&fit=crop&auto=format`}
+                    alt={apod.apod_title}
+                />
+            )}
+            {apod.media_type === "video" && (
+                <iframe src={apod.apod_url}></iframe>
+            )}
             <div className="displayFlex justifyCenter">
                 {!isFavorite && (
                     <IconButton
@@ -33,7 +29,7 @@ const APODDisplay = ({
                     <IconButton
                         variant="contained"
                         color="primary"
-                        onClick={() => removeFavorite(apod_id)}
+                        onClick={() => removeFavorite(apod.apod_id)}
                     >
                         <FavoriteSharpIcon />
                     </IconButton>
