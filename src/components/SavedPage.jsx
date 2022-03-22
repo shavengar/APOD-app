@@ -30,7 +30,7 @@ const SavedPage = ({ removeFavorite, favorites, user }) => {
 
 const mapStateToProps = (state) => {
     return {
-        favorites: state.favorites,
+        favorites: state.apods.favorites,
         user: state.user,
     };
 };
