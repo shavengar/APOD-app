@@ -35,7 +35,7 @@ const LoginPage = ({ setUser }) => {
         }
         setError(false);
         setIsUser(true);
-        setUser(usernameRef);
+        setUser(usernameInput);
         navigate("/home");
     }, []);
     return (
