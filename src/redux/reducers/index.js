@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import favoriteReducer from "./favorite.reducers";
+import apodReducer from "./apod.reducer";
 import userReducer from "./user.reducer";
 
 const rootReducer = combineReducers({
     user: userReducer,
-    favorites: favoriteReducer,
+    apods: apodReducer,
 });
 
 export default rootReducer;
