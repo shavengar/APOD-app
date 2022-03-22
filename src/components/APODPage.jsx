@@ -14,6 +14,11 @@ const APODPage = ({
     user,
 }) => {
     const { data, error, loading } = useAPOD(user);
+    /*
+     * creates new array of the favorites' apod ids
+     * compares if result's id matches the favorite's id
+     * boolean then used to show favorite button or add favorite button
+     */
     const favIds = useMemo(
         () => favorites.map((fav) => fav.apod_id),
         [favorites]
@@ -23,7 +28,6 @@ const APODPage = ({
             setAPODS(data);
         }
     }, [data]);
-    console.log(results);
 
     return (
         <section>
