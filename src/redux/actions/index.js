@@ -1,2 +1,2 @@
 export * from "./user.actions";
-export * from "./favorite.actions";
+export * from "./apod.actions";
