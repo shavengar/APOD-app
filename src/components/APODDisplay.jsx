@@ -13,7 +13,7 @@ const APODDisplay = ({ apod, isFavorite, addFavorite, removeFavorite }) => {
                 />
             )}
             {apod.media_type === "video" && (
-                <iframe src={apod.apod_url}></iframe>
+                <iframe src={apod.apod_url} width="100%"></iframe>
             )}
             <div className="displayFlex justifyCenter">
                 {!isFavorite && (
