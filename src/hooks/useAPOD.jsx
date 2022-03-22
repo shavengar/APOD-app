@@ -11,7 +11,7 @@ const baseURL =
  * @returns copyright, date (using for id since unique), explanation, media type, title, and url
  */
 
-const useAPOD = () => {
+const useAPOD = (user) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -41,7 +41,7 @@ const useAPOD = () => {
             }
         }
         getData();
-    }, []);
+    }, [user]);
     return { data, error, loading };
 };
 

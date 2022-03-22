@@ -5,8 +5,8 @@ import useAPOD from "../hooks/useAPOD";
 import APODDisplay from "./APODDisplay";
 import { addFavorite, removeFavorite } from "../redux/actions";
 
-const APODPage = ({ addFavorite, removeFavorite, favorites }) => {
-    const { data, error, loading } = useAPOD();
+const APODPage = ({ addFavorite, removeFavorite, favorites, user }) => {
+    const { data, error, loading } = useAPOD(user);
     const favIds = useMemo(
         () => favorites.map((fav) => fav.apod_id),
         [favorites]
@@ -45,7 +45,7 @@ const APODPage = ({ addFavorite, removeFavorite, favorites }) => {
 };
 
 const mapStateToProps = (state) => {
-    return { favorites: state.favorites };
+    return { favorites: state.favorites, user: state.user };
 };
 
 const mapDispatchToProps = {
