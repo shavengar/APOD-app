@@ -1,4 +1,4 @@
-import { Button, ImageListItem, IconButton } from "@mui/material";
+import { ImageListItem, IconButton } from "@mui/material";
 import React from "react";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
@@ -13,7 +13,11 @@ const APODDisplay = ({ apod, isFavorite, addFavorite, removeFavorite }) => {
                 />
             )}
             {apod.media_type === "video" && (
-                <iframe src={apod.apod_url} width="100%"></iframe>
+                <iframe
+                    src={apod.apod_url}
+                    title={apod.apod_title}
+                    width="100%"
+                ></iframe>
             )}
             <div className="displayFlex justifyCenter">
                 {!isFavorite && (
