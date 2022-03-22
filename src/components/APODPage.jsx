@@ -1,16 +1,29 @@
 import { Box, ImageList, CircularProgress } from "@mui/material";
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { connect } from "react-redux";
 import useAPOD from "../hooks/useAPOD";
 import APODDisplay from "./APODDisplay";
-import { addFavorite, removeFavorite } from "../redux/actions";
+import { addFavorite, removeFavorite, setAPODS } from "../redux/actions";
 
-const APODPage = ({ addFavorite, removeFavorite, favorites, user }) => {
+const APODPage = ({
+    addFavorite,
+    removeFavorite,
+    setAPODS,
+    results,
+    favorites,
+    user,
+}) => {
     const { data, error, loading } = useAPOD(user);
     const favIds = useMemo(
         () => favorites.map((fav) => fav.apod_id),
         [favorites]
     );
+    useEffect(() => {
+        if (data) {
+            setAPODS(data);
+        }
+    }, [data]);
+    console.log(results);
 
     return (
         <section>
@@ -27,7 +40,7 @@ const APODPage = ({ addFavorite, removeFavorite, favorites, user }) => {
                 <div className="displayFlex justifyCenter">
                     <Box sx={{ width: 1000, height: 700, overflowY: "scroll" }}>
                         <ImageList variant="masonry" cols={3} gap={8}>
-                            {data.map((apod) => (
+                            {results.map((apod) => (
                                 <APODDisplay
                                     key={apod.apod_id}
                                     apod={apod}
@@ -45,12 +58,17 @@ const APODPage = ({ addFavorite, removeFavorite, favorites, user }) => {
 };
 
 const mapStateToProps = (state) => {
-    return { favorites: state.favorites, user: state.user };
+    return {
+        favorites: state.apods.favorites,
+        results: state.apods.results,
+        user: state.user,
+    };
 };
 
 const mapDispatchToProps = {
     addFavorite,
     removeFavorite,
+    setAPODS,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(APODPage);
