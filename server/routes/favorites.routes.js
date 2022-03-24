@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const authenticate = require("../middleware/authentication.middleware");
 const {
     addFavorite,
     removeFavorite,
@@ -20,7 +21,6 @@ router.put("/add", (req, res) => {
         !apod_id ||
         !apod_title ||
         !apod_date ||
-        !apod_copyright ||
         !apod_info ||
         !apod_url ||
         !media_type
@@ -44,11 +44,11 @@ router.put("/add", (req, res) => {
     addFavorite(res, apod);
 });
 
-router.delete("/remove/:id", (req, res) => {
+router.delete("/remove/:id", authenticate, (req, res) => {
     removeFavorite(res, req.params.id, req.user.id);
 });
 
-router.get("/", (req, res) => {
+router.get("/", authenticate, (req, res) => {
     getFavoritesByUserID(res, req.user.id);
 });
 

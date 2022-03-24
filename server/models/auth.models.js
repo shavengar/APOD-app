@@ -22,11 +22,16 @@ const login = async (res, username, password) => {
                 error: "Invalid username or password.",
             });
         }
-        return res.send({
-            data: { user: user.username },
-            success: true,
-            error: null,
-        });
+        const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+        return res
+            .cookie("access_token", token, {
+                httpOnly: true,
+            })
+            .send({
+                data: { username: user.username },
+                success: true,
+                error: null,
+            });
     } catch (err) {
         return res.send({
             data: null,
