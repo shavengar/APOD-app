@@ -20,24 +20,21 @@ const APODDisplay = ({ apod, isFavorite, addFavorite, removeFavorite }) => {
                 ></iframe>
             )}
             <div className="displayFlex justifyCenter">
-                {!isFavorite && (
-                    <IconButton
-                        variant="outlined"
-                        color="primary"
-                        onClick={() => addFavorite(apod)}
-                    >
-                        <FavoriteBorderSharpIcon />
-                    </IconButton>
-                )}
-                {isFavorite && (
-                    <IconButton
-                        variant="contained"
-                        color="primary"
-                        onClick={() => removeFavorite(apod.apod_id)}
-                    >
+                <IconButton
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                        isFavorite
+                            ? removeFavorite(apod.apod_id)
+                            : addFavorite(apod);
+                    }}
+                >
+                    {isFavorite ? (
                         <FavoriteSharpIcon />
-                    </IconButton>
-                )}
+                    ) : (
+                        <FavoriteBorderSharpIcon />
+                    )}
+                </IconButton>
             </div>
         </ImageListItem>
     );
