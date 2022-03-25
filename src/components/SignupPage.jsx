@@ -1,13 +1,22 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useAPI from "../hooks/useAPI";
 import rocket from "../images/rocket.jpg";
-import { Typography, Alert, Button, TextField } from "@mui/material";
+import {
+    Typography,
+    Alert,
+    AlertTitle,
+    Button,
+    TextField,
+} from "@mui/material";
 import RocketLaunchSharpIcon from "@mui/icons-material/RocketLaunchSharp";
 
 const SignupPage = () => {
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-    const [invalid, setInvalid] = useState(false);
+    const [requirements, setRequirements] = useState(false);
+    const [inUse, setInUse] = useState(false);
+    const { signup } = useAPI();
     const navigate = useNavigate();
 
     /**
@@ -19,19 +28,25 @@ const SignupPage = () => {
      *
      */
 
-    const handleSignup = useCallback(() => {
-        const usernameInput = usernameRef.current.value;
-        const passwordInput = passwordRef.current.value;
+    const handleSignup = useCallback(async () => {
+        const username = usernameRef.current.value;
+        const password = passwordRef.current.value;
         if (
-            usernameInput.length < 5 ||
-            usernameInput.length > 20 ||
-            passwordInput.length < 8 ||
-            passwordInput.length > 20
+            username.length < 5 ||
+            username.length > 20 ||
+            password.length < 8 ||
+            password.length > 20
         ) {
-            return setInvalid(true);
+            return setRequirements(true);
         }
-        setInvalid(false);
-        navigate("/login");
+        const res = await signup(username, password);
+        if (!res.data.success) {
+            setInUse(true);
+        } else {
+            setRequirements(false);
+            setInUse(false);
+            navigate("/login");
+        }
     }, []);
 
     return (
@@ -65,8 +80,9 @@ const SignupPage = () => {
                         >
                             Sign Up
                         </Button>
-                        {invalid && (
-                            <Alert severity="error">
+                        {requirements && (
+                            <Alert severity="info" sx={{ mb: 2 }}>
+                                <AlertTitle>Info</AlertTitle>
                                 <Typography
                                     sx={{ fontWeight: 700, fontSize: 14 }}
                                 >
@@ -88,6 +104,16 @@ const SignupPage = () => {
                                 </Typography>
                                 <Typography sx={{ fontSize: 14 }}>
                                     - Must have fewer than 20 characters
+                                </Typography>
+                            </Alert>
+                        )}
+                        {inUse && (
+                            <Alert severity="error">
+                                <AlertTitle>Error</AlertTitle>
+                                <Typography
+                                    sx={{ fontWeight: 700, fontSize: 14 }}
+                                >
+                                    Username already in use.
                                 </Typography>
                             </Alert>
                         )}
