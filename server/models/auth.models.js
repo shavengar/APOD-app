@@ -1,5 +1,6 @@
 const query = require("../config/mysql.config");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const login = async (res, username, password) => {
     try {
@@ -14,7 +15,7 @@ const login = async (res, username, password) => {
                 error: "Invalid username or password.",
             });
         }
-        const passwordMatch = bcrypt.compare(password);
+        const passwordMatch = bcrypt.compare(password, user.password);
         if (!passwordMatch) {
             return res.send({
                 data: null,
@@ -33,6 +34,7 @@ const login = async (res, username, password) => {
                 error: null,
             });
     } catch (err) {
+        console.log(err);
         return res.send({
             data: null,
             success: false,
