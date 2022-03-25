@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use(express.static(__dirname + "/build"));
-app.unsubscribe(cookieParser());
+app.use(cookieParser());
 app.use(passport.initialize());
 
 app.use("/api/users", authRoutes);
