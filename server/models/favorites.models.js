@@ -2,11 +2,11 @@ const query = require("../config/mysql.config");
 
 const addFavorite = async (res, favorite) => {
     try {
-        let { insertID } = await query("INSERT INTO favorites SET ?", [
+        let { insertId } = await query("INSERT INTO favorites SET ?", [
             favorite,
         ]);
         return res.send({
-            data: { ...favorite, id: insertID },
+            data: { ...favorite, id: insertId },
             success: true,
             error: null,
         });
@@ -19,9 +19,12 @@ const addFavorite = async (res, favorite) => {
     }
 };
 
-const removeFavorite = async (res, id) => {
+const removeFavorite = async (res, apod_id, user_id) => {
     try {
-        await query("DELETE FROM favorites WHERE favorites.id = ?", [id]);
+        await query(
+            "DELETE FROM favorites WHERE favorites.apod_id = ? AND favorites.user_id = ?",
+            [apod_id, user_id]
+        );
         return res.send({
             data: "Removed successfully.",
             success: true,
@@ -42,7 +45,7 @@ const getFavoritesByUserID = async (res, userID) => {
             "SELECT * FROM favorites WHERE favorites.user_id = ?"[userID]
         );
         return res.send({
-            data: [favorites],
+            data: favorites,
             success: true,
             error: null,
         });
