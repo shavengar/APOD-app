@@ -8,25 +8,23 @@ const APODDisplay = ({ apod, isFavorite, addFavorite, removeFavorite }) => {
         <ImageListItem>
             {apod.media_type === "image" && (
                 <img
-                    src={`${apod.apod_url}?w=248&fit=crop&auto=format`}
-                    alt={apod.apod_title}
+                    src={`${apod.url}?w=248&fit=crop&auto=format`}
+                    alt={apod.title}
                 />
             )}
             {apod.media_type === "video" && (
-                <iframe
-                    src={apod.apod_url}
-                    title={apod.apod_title}
-                    width="100%"
-                ></iframe>
+                <iframe src={apod.url} title={apod.title} width="100%"></iframe>
             )}
             <div className="displayFlex justifyCenter">
                 <IconButton
                     variant="contained"
                     color="primary"
                     onClick={() => {
-                        isFavorite
-                            ? removeFavorite(apod.apod_id)
-                            : addFavorite(apod);
+                        if (isFavorite) {
+                            removeFavorite(apod.apod_id);
+                        } else {
+                            addFavorite(apod);
+                        }
                     }}
                 >
                     {isFavorite ? (
