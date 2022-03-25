@@ -25,13 +25,13 @@ const useAPOD = (user) => {
                 const res = await axios.get(baseURL);
                 const apods = res.data.map((apod) => ({
                     apod: apod,
-                    apod_copyright: apod.copyright,
+                    copyright: apod.copyright,
                     apod_id: apod.date,
-                    apod_date: apod.date,
-                    apod_info: apod.explanation,
+                    date: apod.date,
+                    info: apod.explanation,
                     media_type: apod.media_type,
-                    apod_title: apod.title,
-                    apod_url: apod.url,
+                    title: apod.title,
+                    url: apod.url,
                 }));
                 setData(apods);
             } catch (err) {
