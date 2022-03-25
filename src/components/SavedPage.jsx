@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import APODDisplay from "./APODDisplay";
 import { removeFavorite } from "../redux/actions";
 import { Box, ImageList } from "@mui/material";
+import useAPI from "../hooks/useAPI";
 
 const SavedPage = ({ removeFavorite, favorites, user }) => {
+    const { removeFav } = useAPI();
+    const removeFromBackend = useCallback(
+        async (apod_id) => {
+            const res = await removeFav(apod_id);
+            if (res.data.success) {
+                removeFavorite(apod_id);
+            }
+        },
+        [removeFavorite, removeFav]
+    );
     return (
         <section>
             <div className="displayFlex justifyCenter">
@@ -17,7 +28,7 @@ const SavedPage = ({ removeFavorite, favorites, user }) => {
                             <APODDisplay
                                 key={apod.apod_id}
                                 apod={apod}
-                                removeFavorite={removeFavorite}
+                                removeFavorite={removeFromBackend}
                                 isFavorite={true}
                             />
                         ))}

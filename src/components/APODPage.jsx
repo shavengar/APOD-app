@@ -1,9 +1,10 @@
 import { Box, ImageList, CircularProgress } from "@mui/material";
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import useAPOD from "../hooks/useAPOD";
 import APODDisplay from "./APODDisplay";
 import { addFavorite, removeFavorite, setAPODS } from "../redux/actions";
+import useAPI from "../hooks/useAPI";
 
 const APODPage = ({
     addFavorite,
@@ -14,6 +15,7 @@ const APODPage = ({
     user,
 }) => {
     const { data, error, loading } = useAPOD(user);
+    const { addFav, removeFav } = useAPI();
     /*
      * creates new array of the favorites' apod ids
      * compares if result's id matches the favorite's id
@@ -28,6 +30,26 @@ const APODPage = ({
             setAPODS(data);
         }
     }, [data]);
+
+    const addFavToBackend = useCallback(
+        async (apod) => {
+            const res = await addFav({ ...apod });
+            if (res.data.success) {
+                addFavorite(res.data.data);
+            }
+        },
+        [addFavorite, addFav]
+    );
+
+    const removeFavFromBackend = useCallback(
+        async (apod_id) => {
+            const res = await removeFav(apod_id);
+            if (res.data.success) {
+                removeFavorite(apod_id);
+            }
+        },
+        [removeFavorite, removeFav]
+    );
 
     return (
         <section>
@@ -49,8 +71,8 @@ const APODPage = ({
                                     key={apod.apod_id}
                                     apod={apod}
                                     isFavorite={favIds.includes(apod.apod_id)}
-                                    addFavorite={addFavorite}
-                                    removeFavorite={removeFavorite}
+                                    addFavorite={addFavToBackend}
+                                    removeFavorite={removeFavFromBackend}
                                 />
                             ))}
                         </ImageList>
