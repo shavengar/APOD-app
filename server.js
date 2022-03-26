@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const PORT = process.env.port || 8080;
+const PORT = process.env.PORT || 8080;
 const authRoutes = require("./server/routes/auth.routes");
 const favoritesRoutes = require("./server/routes/favorites.routes");
 const passport = require("./server/config/passport.config");
