@@ -1,9 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { clearUser } from "../redux/actions";
+import { clearUser, clearAPODS } from "../redux/actions";
+import useAPI from "../hooks/useAPI";
 
-const Menu = ({ user, clearUser }) => {
+const Menu = ({ user, clearUser, clearAPODS }) => {
+    const { logout } = useAPI();
+
     return (
         <div className="primaryColors">
             {!user && (
@@ -49,8 +52,10 @@ const Menu = ({ user, clearUser }) => {
                             isActive ? "active" : "nav"
                         }
                         to="login"
-                        onClick={() => {
+                        onClick={async () => {
+                            await logout();
                             clearUser();
+                            clearAPODS();
                         }}
                     >
                         Logout
@@ -68,6 +73,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
     clearUser,
+    clearAPODS,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
