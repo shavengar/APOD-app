@@ -39,10 +39,11 @@ const removeFavorite = async (res, apod_id, user_id) => {
     }
 };
 
-const getFavoritesByUserID = async (res, userID) => {
+const getFavoritesByUserID = async (res, user_id) => {
     try {
         const favorites = await query(
-            "SELECT * FROM favorites WHERE favorites.user_id = ?"[userID]
+            "SELECT * FROM favorites WHERE favorites.user_id = ?",
+            [user_id]
         );
         return res.send({
             data: favorites,
